@@ -1,0 +1,33 @@
+﻿@model IEnumerable<ContactManager.Models.AddressBook>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Address Book</h3>
+
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+@using (Html.BeginForm("Index","AddressBooks",FormMethod.Post, new { id = "demoForm", name = "demoForm" }))
+{
+@Html.DropDownList("countryid",(IEnumerable<SelectListItem>)ViewBag.FkcountryId ,"select country" , new { Class = "ddlStyle", onchange = "SelectedIndexChanged()" } )
+@Html.DropDownList("statename",(IEnumerable<SelectListItem>)ViewBag.FkstateId,"select state")
+@Html.DropDownList("isactive",new List<SelectListItem>()
+                            {
+                                 new SelectListItem(){Text = "All",Value="null"},
+                                 new SelectListItem(){Text = "Active",Value="True"},
+                                 new SelectListItem(){Text = "InActive",Value="False"},
+                            })
+<input type = "submit" value ="submit" class="btn btn-success" />
+<input type = "submit" name ="reset" value ="reset" class="btn btn-success" />
+}
+
+<script type="text/javascript">
+function SelectedIndexChanged()
+{
+    document.demoForm.submit();
+}
+</script>
+
+<partial name="_AddressBook"></partial>
+

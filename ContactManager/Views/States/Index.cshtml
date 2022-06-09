@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ContactManager.Models.State>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>States</h3>
+
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<p>
+    <a asp-action="Create" ><i class='fas fa-plus-circle'></i>Create New</a>
+</p>
+@using(Html.BeginForm("Index","States"))
+{
+@Html.DropDownList("countryname",(IEnumerable<SelectListItem>)ViewBag.FkcountryId ,"select country" )
+<input type = "submit" name = "search" value ="search" class="btn btn-success" />
+<input type = "submit" name = "reset" value ="reset" class="btn btn-success" />
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StateName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fkcountry.CountryName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StateName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fkcountry.CountryName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PkstateId"><i class='fas fa-edit'></i>Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PkstateId"><i class='far fa-address-card'></i>Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PkstateId"><i class='fas fa-trash'></i>Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

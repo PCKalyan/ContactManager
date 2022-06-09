@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome @User.Identity.Name</h1>
+</div>
+<p>
+    <h1 class="text-center">Contacts Manager Application</h1>
+    <h3>Objective:</h3>
+    The main objective of the application is lets you add contacts to Addressbook based on the registered user. These contacts are then used by their corresponding users, Admin can view and perform edit/delete operations on those contacts. Contacts can be grouped based on country name, state name and status. A default group called "Addressbook" contains all contacts and allows user to add, edit, deleted, Admin can not add contacts.
+    <h3>Purpose of the Application:</h3>
+    The software project is a ASP.NET MVC WebForms based Addressbook that stores a large amount of users and thier corresponding contacts info, related data in an Sql database for instant search and retrieval.  The Addressbook stores and manages the respective addresses in Sql database and user can view them as needed. The user may view search specific details based on country name, state name, status. This search allows user to get specific details form the Addressbook in a short amount of time. This ASP.NET MVC WebForms application allows fast and efficient retrieval of data from an address book to a large number of users.
+    <h3>Scope:</h3>
+    The Application interacts with the Sql server database which is in the Sql server. ContactsManager database has four tables Country, State, User, Address. Country, State tables for getting the country name and state name of the address. User, Address tables to store multiple users and addresses information and track all of them through the application, Following are the Primary Features of the Application.
+    <ol>
+        <li>
+            Unlimited Addresses: Each address book can contain an unlimited number of addresses.
+        </li>
+        <li>
+            Authorised and restricted user accessibility.
+        </li>
+        <li>
+            Filter your addresses based on country name and state name.
+        </li>
+        <li>
+            Privacy: Address books can be visible to corresponding users and password protected to keep your information secure.
+        </li>
+        <li>
+            More flexible and easy to maintain users and addresses, user can add and make changes to existing addresses, admin can make changes to both existing addresses and users, he can also able to add new users.
+        </li>
+    </ol>

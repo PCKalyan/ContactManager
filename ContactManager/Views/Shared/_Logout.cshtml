@@ -1,0 +1,15 @@
+﻿@if (User.Identity.IsAuthenticated)
+{
+    <li>
+        <a class="form-inline" asp-action="Logout" asp-controller="Login">Logout</a>
+    </li>
+}
+else
+{
+    <li>
+        <a class="form-inline" asp-action="Index" asp-controller="Login">Login</a>
+    </li>
+    <li>
+        <a asp-area="" asp-controller="UserDetails" asp-action="Create">Registration</a>
+    </li>
+}

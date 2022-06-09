@@ -1,0 +1,95 @@
+﻿@model ContactManager.Models.AddressBook
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>AddressBook</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FkstateId" class="control-label"></label><span class="text-danger">*</span>
+                <select asp-for="FkstateId"  class ="form-control" asp-items="ViewBag.FkstateId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="FkuserId" class="control-label"></label><span class="text-danger">*</span>
+                <select asp-for="FkuserId" class ="form-control" asp-items="ViewBag.FkuserId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label><span class="text-danger">*</span>
+                <input asp-for="FirstName" class="form-control" placeholder="First Name"/>
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control"  placeholder="Last Name"/>
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmailId" class="control-label"></label><span class="text-danger">*</span>
+                <input asp-for="EmailId" class="form-control"  placeholder="Email ID" />
+                <span asp-validation-for="EmailId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNo" class="control-label"></label><span class="text-danger">*</span>
+                <input asp-for="PhoneNo" class="form-control"  placeholder="Phone Number"/>
+                <span asp-validation-for="PhoneNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address1" class="control-label"></label>
+                <input asp-for="Address1" class="form-control"  placeholder="Address1"/>
+                <span asp-validation-for="Address1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address2" class="control-label"></label><span class="text-danger">*</span>
+                <input asp-for="Address2" class="form-control"  placeholder="Address2"/>
+                <span asp-validation-for="Address2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Street" class="control-label"></label><span class="text-danger">*</span>
+                <input asp-for="Street" class="form-control"  placeholder="Street Name" />
+                <span asp-validation-for="Street" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label><span class="text-danger">*</span>
+                <input asp-for="City" class="form-control"  placeholder="City Name"/>
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ZipCode" class="control-label"></label><span class="text-danger">*</span>
+                <input asp-for="ZipCode" class="form-control"  placeholder="ZipCode"/>
+                <span asp-validation-for="ZipCode" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+@if(User.Identity.Name=="Chinni")
+{
+<div>
+    <a asp-action="Index">Back to List</a>
+    </div>
+}
+else
+{
+    <div>
+    <a asp-controller="Login" asp-action="GetbyUser">Back to List</a>
+    </div>
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

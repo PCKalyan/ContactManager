@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ContactManager</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/MenuBar.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ContactManager.styles.css" asp-append-version="true" />
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+
+</head>
+<body>
+    <header>
+        <nav>
+            <div>
+                <div class="logo">ContactManager</div>
+                <ul>
+                    <li><partial name="_Logout" /></li>
+                </ul>
+            </div>
+
+            <ul>
+                <li>
+                    <a asp-area="" asp-controller="Home" asp-action="Index"><i class="fas fa-house-user"></i>Home</a>
+                </li>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @if (User.Identity.Name == "Chinni")
+                    {
+
+                        <li>
+                            <a asp-area="" asp-controller="" asp-action="">Manage</a>
+                            
+                                <ul>
+                                    <li>
+                                        <a asp-area="" asp-controller="UserDetails" asp-action="Index">UserDetails</a>
+                                    </li>
+                                    <li>
+                                        <a asp-area="" asp-controller="States" asp-action="Index">States</a>
+                                    </li>
+                                    <li>
+                                        <a asp-area="" asp-controller="Countries" asp-action="Index">Countries</a>
+                                    </li>
+                                </ul>
+                            
+                        </li>
+                        <li>
+                            <a asp-area="" asp-controller="AddressBooks" asp-action="Index"><i class="fas fa-address-book"></i>AddressBooks</a>
+                        </li>
+
+                    }
+                    else
+                    {
+                        <li>
+                            <a asp-area="" asp-controller="Login" asp-action="GetbyUser"><i class="fas fa-address-book"></i>AddressBooks</a>
+                        </li>
+                    }
+                }
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div style="text-align:right;color:black" class="container">
+            <h4 >Chinnikalyan Potnuru</h4>
+            <h6><a href="mailto:kalyanchinni1234@gmail.com">kalyanchinni1234@gmail.com</a></h6>
+        </div>
+                
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js">
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+

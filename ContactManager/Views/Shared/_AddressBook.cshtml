@@ -1,0 +1,80 @@
+﻿@model IEnumerable<ContactManager.Models.AddressBook>
+
+@if (User.Identity.IsAuthenticated)
+{
+    @if (User.Identity.Name != "Chinni")
+    {
+        <h3>UserName:  @ViewData["Name"]</h3>
+        <p>
+            <a asp-controller="AddressBooks" asp-action="Create"><i class='fas fa-plus-circle'></i>Create New</a>
+        </p>
+    }
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Full Name")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.FkstateId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fkstate.FkcountryId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)  @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmailId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fkstate.StateName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fkstate.Fkcountry.CountryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-controller="AddressBooks" asp-route-id="@item.PkaddressId"><i class='fas fa-edit'></i>Edit</a> |
+                    <a asp-action="Details" asp-controller="AddressBooks" asp-route-id="@item.PkaddressId"><i class='far fa-address-card'></i>Details</a> |
+                    <a asp-action="Delete" asp-controller="AddressBooks" asp-route-id="@item.PkaddressId"><i class='fas fa-trash'></i>Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
